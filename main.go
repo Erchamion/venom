@@ -15,6 +15,8 @@ package main
 import (
 	"log"
 	"math/rand"
+
+	"github.com/BattlesnakeOfficial/starter-snake-go/timing"
 )
 
 // info is called when you create your Battlesnake on play.battlesnake.com
@@ -46,6 +48,7 @@ func end(state GameState) {
 // Valid moves are "up", "down", "left", or "right"
 // See https://docs.battlesnake.com/api/example-move for available data
 func move(state GameState) BattlesnakeMoveResponse {
+	defer timing.Timer("move")()
 
 	isMoveSafe := map[string]bool{
 		"up":    true,
